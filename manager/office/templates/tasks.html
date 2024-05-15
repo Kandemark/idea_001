@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+<div class="content">
+
+    {% block content %}
+    <div class="container" id="container1">
+        <h1>Task Manager</h1>      
+        <form class="task-item" method="post" action="{% url 'task_create' %}"> 
+            {% csrf_token %}
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Task</th>
+                        <th>Description</th>
+                        <th>Date of Submission</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'task_edit' task.id %}">Edit</a>
+                            </td>
+                            <td>{{ task.taskname }}</td>
+                            <td>{{ task.taskdescription }}</td>
+                            <td>{{ task.date_of_submission }}</td>
+                            <td>
+                                <form method="post" action="{% url 'task_delete' task.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+        <hr>
+        <!-- Link to create a new task -->
+        <button><a href="{% url 'task_create' %}">Create Task</a></button>
+    </div>
+    {% endblock %}
+    
+
+</div>

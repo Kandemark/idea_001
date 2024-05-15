@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" id="container1">
+    <h1>Edit Task</h1>      
+    <form class="task-item" method="post" action="{% url 'task_edit' task.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!-- employees.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if employees %}
+        <div class="container">
+            <h2> pending employee apllications</h2>
+            <form method="post" action="{% url 'process_employees' %}">
+                {% csrf_token %}
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                        <tr>
+                            <td>
+                                <button type="submit" name="action" value="edit_{{ employee.id }}">Edit</button>
+                            </td>
+                            <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.date_of_birth }}</td>
+                            <td>{{ employee.phone_number }}</td>
+                            <td>
+                                <button type="submit" name="action" value="promote_{{ employee.id }}">Promote</button>
+                                <button type="submit" name="action" value="del_{{ employee.id }}" id="fire">Reject</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+        </div>
+    {% endif %}
+
+        
+
+{% endblock %}

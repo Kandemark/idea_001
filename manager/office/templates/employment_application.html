@@ -1,0 +1,74 @@
+<!-- employment_application.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <h2>Employment Application</h2>
+        <form action="#" method="post">
+            <label for="firstname">First Name:</label><br>
+            <input type="text" id="firstname" name="firstname" required><br>
+    
+            <label for="lastname">Last Name:</label><br>
+            <input type="text" id="lastname" name="lastname" required><br>
+    
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+    
+            <label for="dob">Date of Birth:</label><br>
+            <input type="date" id="dob" name="dob" required><br>
+    
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone" name="phone" required><br>
+    
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address"><br>
+    
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city"><br>
+    
+            <label for="country">country:</label><br>
+            <input type="text" id="country" name="country"><br>
+    
+            <label for="postal_code">Postal Code:</label><br>
+            <input type="text" id="postal_code" name="postal_code"><br>
+    
+            <label for="joining_date">Joining Date:</label><br>
+            <input type="date" id="joining_date" name="joining_date" required><br>
+    
+            <label for="membership_type">Membership Type:</label><br>
+            <select id="membership_type" name="membership_type">
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="gold">Gold</option>
+            </select><br>
+    
+            <label for="membership_status">Membership Status:</label><br>
+            <input type="radio" id="active" name="membership_status" value="active" checked>
+            <label for="active">Active</label><br>
+            <input type="radio" id="inactive" name="membership_status" value="inactive">
+            <label for="inactive">Inactive</label><br>
+    
+            <label for="years_of_experience">Years of Experience:</label><br>
+            <input type="number" id="years_of_experience" name="years_of_experience" min="0" required><br>
+    
+            <label for="education_level">Education Level:</label><br>
+            <select id="education_level" name="education_level">
+                <option value="high_school">High School</option>
+                <option value="associate">Associate's Degree</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+                <option value="phd">PhD</option>
+            </select><br>
+            
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Submit Application</button>
+        </form>
+        </form>
+    </form>
+</div>
+{% endblock %}

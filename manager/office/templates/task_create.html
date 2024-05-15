@@ -1,0 +1,15 @@
+<!-- employees.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" id="container1">
+    <h1>Create Task</h1>      
+    <form class="task-item" method="post" action="{% url 'task_create' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
